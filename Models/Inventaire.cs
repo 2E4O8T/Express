@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Express.Models
 {
@@ -38,6 +39,7 @@ namespace Express.Models
         public string? Description { get; set; }
         public string? NomPhoto { get; set; }
         public string? CheminPhoto { get; set; }
+        [NotMapped]
         public IFormFile? Photo { get; set; }
         public ICollection<Reparation>? Reparations { get; set; }
     }

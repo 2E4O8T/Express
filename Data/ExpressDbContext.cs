@@ -10,6 +10,10 @@ namespace Express.Data
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
         public DbSet<Inventaire> Inventaires { get; set; }
         public DbSet<Reparation> Reparations { get; set; }
     }
