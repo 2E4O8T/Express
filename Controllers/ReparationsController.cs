@@ -48,7 +48,7 @@ namespace Express.Controllers
         // GET: Reparations/Create
         public IActionResult Create()
         {
-            ViewData["InventaireId"] = new SelectList(_context.Inventaires, "Id", "Finition");
+            ViewData["InventaireId"] = new SelectList(_context.Inventaires, "Id", "MarqueModeleFinition");
             return View();
         }
 

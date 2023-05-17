@@ -22,6 +22,7 @@ namespace Express.Models
         [Required]
         [DisplayName("Finition")]
         public string Finition { get; set; }
+        public string MarqueModeleFinition => $"{Marque} {Modele} {Finition}";
         [DataType(DataType.Date)]
         [DisplayName("Date d'achat")]
         public DateTime DateAchat { get; set; }
