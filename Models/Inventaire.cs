@@ -35,7 +35,7 @@ namespace Express.Models
         [DisplayName("Date de vente")]
         public DateTime? DateVente { get; set; }
         [DisplayName("Véhicule disponible")]
-        public bool? EstDisponible { get; set; }
+        public bool EstDisponible { get; set; }
         public string? Description { get; set; }
         public string? NomPhoto { get; set; }
         public string? CheminPhoto { get; set; }
