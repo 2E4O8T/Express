@@ -22,9 +22,13 @@ namespace Express.Controllers
         // GET: Inventaires
         public async Task<IActionResult> Index()
         {
-              return _context.Inventaires != null ? 
-                          View(await _context.Inventaires.ToListAsync()) :
-                          Problem("Entity set 'ExpressDbContext.Inventaires'  is null.");
+            //return _context.Inventaires != null ? 
+            //            View(await _context.Inventaires.ToListAsync()) :
+            //            Problem("Entity set 'ExpressDbContext.Inventaires'  is null.");
+            var monInventaire = View(await _context.Inventaires
+                .Include(i => i.Reparations)
+                .ToListAsync());
+            return monInventaire;
         }
 
         // GET: Inventaires/Details/5

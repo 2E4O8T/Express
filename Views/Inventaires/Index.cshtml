@@ -42,11 +42,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.NomPhoto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CheminPhoto)
+            </th>*@
+            <th>
+                Réparation(s)
             </th>
             <th></th>
         </tr>
@@ -84,11 +87,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.NomPhoto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheminPhoto)
+            </td>*@
+            <td>
+                    @foreach (var intervention in item.Reparations)
+                    {
+                        <p>@intervention.TypeIntervention</p>
+                    }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
