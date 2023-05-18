@@ -54,9 +54,6 @@
             <th>
                 Réparation(s)
             </th>
-            <th>
-                Prix
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -82,7 +79,14 @@
                 @Html.DisplayFor(modelItem => item.PrixAchat)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PrixVente)
+                @*@Html.DisplayFor(modelItem => item.PrixVente)*@
+@*                    @foreach(var somme in item.Reparations)
+                    {
+                        <p>@somme.CoutReparation</p>
+
+                        @somme.CoutReparation
+                    }*@
+                    @(item.Reparations.Sum(s => s.CoutReparation) + item.PrixAchat + 500)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateVente)
@@ -107,12 +111,7 @@
                         <p>@reparation.TypeIntervention</p>
                     }
             </td>
-@*            <td>
-                    @foreach (var prix in item.Reparations
-            </td>*@
-            <td>
-
-            </td>
+            <td></td>
             <td>
                     <input type="submit" value="Editer" class="btn btn-outline-primary btn-sm" onclick="window.location.href='@Url.Action("Edit")'" / />
                     <input type="submit" value="Supprimer" class="btn btn-outline-primary btn-sm" onclick="window.location.href='@Url.Action("Delete")'" />
