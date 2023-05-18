@@ -20,7 +20,24 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <ul class="navbar-nav flex-grow-1">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Voitures
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Inventaires" asp-action="Index">Voir les voitures</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Inventaires" asp-action="Create">Ajouter une voiture</a></li>
+                            </ul>
+
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" >
+                                Réparations
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Reparations" asp-action="Index">Voir les réparations</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Reparations" asp-action="Create">Ajouter une réparation</a></li>
+                            </ul>
+                        </div>
+@*                        <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #F9DBBB" asp-area="" asp-controller="Inventaires" asp-action="Create">Ajouter une voiture</a>
                             </li>
@@ -30,7 +47,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #F9DBBB" asp-area="" asp-controller="Home" asp-action="Index">Modifier</a>
                             </li>
-                        </ul>
+                        </ul>*@
                     }
                     <partial name="_LoginPartial" />
                 </div>
