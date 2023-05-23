@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Express.Data;
 using Express.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Express.Controllers
 {
@@ -20,15 +21,27 @@ namespace Express.Controllers
         }
 
         // GET: Inventaires
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             //return _context.Inventaires != null ? 
             //            View(await _context.Inventaires.ToListAsync()) :
             //            Problem("Entity set 'ExpressDbContext.Inventaires'  is null.");
-            var inventaireReparations = View(await _context.Inventaires
+            if (User.Identity.IsAuthenticated)
+            {
+                var inventaireReparations = View(await _context.Inventaires
                 .Include(i => i.Reparations)
                 .ToListAsync());
-            return inventaireReparations;
+                return inventaireReparations;
+            }
+            else
+            {
+                var monInventaire = View(await _context.Inventaires
+                .Include(i => i.Reparations)
+                .Where(i => i.EstDisponible == true)
+                .ToListAsync());
+                return monInventaire;
+            }
         }
 
         // GET: Inventaires/Details/5
@@ -58,6 +71,7 @@ namespace Express.Controllers
         // POST: Inventaires/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Annee,Marque,Modele,Finition,DateAchat,PrixAchat,PrixVente,DateVente,EstDisponible,Description,NomPhoto,CheminPhoto")] Inventaire inventaire)
