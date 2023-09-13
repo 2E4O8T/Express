@@ -78,9 +78,16 @@ namespace Express.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(inventaire);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(inventaire);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (ArgumentException e)
+                {
+                    Console.WriteLine($"Processing failed: {e.Message}");
+                }
             }
             return View(inventaire);
         }

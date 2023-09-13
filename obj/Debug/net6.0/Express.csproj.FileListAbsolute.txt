@@ -278,3 +278,10 @@ C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\runtimes\unix\lib\net6.0\S
 C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\Microsoft.Owin.dll
+C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\Microsoft.Owin.Security.dll
+C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\Microsoft.Owin.Security.Cookies.dll
+C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\Microsoft.Owin.Security.OAuth.dll
+C:\Users\A141QT\source\repos\Express\bin\Debug\net6.0\Owin.dll

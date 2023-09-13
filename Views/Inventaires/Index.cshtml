@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<Express.Models.Inventaire>
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,8 +9,7 @@
 <h1>Liste des voitures</h1>
 
 <p>
-    @*<a asp-action="Create">Ajouter une voiture</a>*@
-    <input type="submit" value="Ajouter une voiture" class="btn btn-outline-primary btn-sm" onclick="window.location.href='@Url.Action("Create")'" / />
+
 </p>
 <table class="table">
     <thead>
@@ -40,17 +41,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.EstDisponible)
             </th>
-            @*
-                <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomPhoto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheminPhoto)
-            </th>
-            *@
             <th>
                 Réparation(s)
             </th>
@@ -79,13 +69,6 @@
                 @Html.DisplayFor(modelItem => item.PrixAchat)
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.PrixVente)*@
-@*                    @foreach(var somme in item.Reparations)
-                    {
-                        <p>@somme.CoutReparation</p>
-
-                        @somme.CoutReparation
-                    }*@
                     @(item.Reparations.Sum(s => s.CoutReparation) + item.PrixAchat + 500)
             </td>
             <td>
@@ -94,17 +77,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EstDisponible)
             </td>
-            @*
-                <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomPhoto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CheminPhoto)
-            </td>
-            *@
             <td>
                     @foreach (var reparation in item.Reparations)
                     {
@@ -112,14 +84,19 @@
                     }
             </td>
             <td></td>
-            <td>
-                    <input type="submit" value="Editer" class="btn btn-outline-primary btn-sm" onclick="window.location.href='@Url.Action("Edit")'" / />
-                    <input type="submit" value="Supprimer" class="btn btn-outline-primary btn-sm" onclick="window.location.href='@Url.Action("Delete")'" />
-            </td>
-@*            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>*@
+                @if (!SignInManager.IsSignedIn(User))
+                {
+                    <td>
+
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
         </tr>
 }
     </tbody>

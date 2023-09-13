@@ -37,7 +37,8 @@
                                 <li><a class="nav-link text-dark" asp-area="" asp-controller="Reparations" asp-action="Create">Ajouter une réparation</a></li>
                             </ul>
                         </div>
-@*                        <ul class="navbar-nav flex-grow-1">
+                    }
+                    @*<ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #F9DBBB" asp-area="" asp-controller="Inventaires" asp-action="Create">Ajouter une voiture</a>
                             </li>
@@ -47,8 +48,19 @@
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #F9DBBB" asp-area="" asp-controller="Home" asp-action="Index">Modifier</a>
                             </li>
-                        </ul>*@
+                        </ul>
                     }
+                    else
+                    {
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Voitures
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Inventaires" asp-action="Index">Voir les voitures</a></li>
+                        </ul>
+                    </div>
+                    }*@
                     <partial name="_LoginPartial" />
                 </div>
             </div>
